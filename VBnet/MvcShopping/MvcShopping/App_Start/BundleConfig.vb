@@ -20,6 +20,7 @@ Public Module BundleConfig
 
         bundles.Add(New StyleBundle("~/Content/css").Include(
                   "~/Content/bootstrap.css",
+                  "~/Content/MyMvcShopping.css",
                   "~/Content/site.css"))
     End Sub
 End Module

@@ -40,6 +40,11 @@ End Code
                             @String.Format("{0:#,### 円}", item.price)
                         </td>
                     </tr>
+                    @if User.Identity.IsAuthenticated Then
+                        @<tr>
+                            <td align = "center" > 買う</td>
+                        </tr>
+                    End If
                 </table>
 
             Next

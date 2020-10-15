@@ -71,6 +71,7 @@ Public Class AccountController
                 })
             Case Else
                 ModelState.AddModelError("", "無効なログイン試行です。")
+                ModelState.AddModelError("", "ユーザー名またはパスワードをお忘れの場合は、メールにて連絡してください")
                 Return View(model)
         End Select
     End Function

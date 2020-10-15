@@ -10,32 +10,45 @@ End Code
     @Html.AntiForgeryToken()
 
     @<text>
-    <h4>新しいアカウントを作成します。</h4>
-    <hr />
-    @Html.ValidationSummary("", New With {.class = "text-danger"})
-    <div class="form-group">
-        @Html.LabelFor(Function(m) m.Email, New With {.class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.TextBoxFor(Function(m) m.Email, New With {.class = "form-control"})
+        <h4>新しいアカウントを作成します。</h4>
+        <hr />
+        @Html.ValidationSummary("", New With {.class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(Function(m) m.Email, New With {.class = "col-md-2 control-label"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(Function(m) m.Email, New With {.class = "form-control"})
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(Function(m) m.Password, New With {.class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.PasswordFor(Function(m) m.Password, New With {.class = "form-control"})
+        <div class="form-group">
+            @Html.LabelFor(Function(m) m.Password, New With {.class = "col-md-2 control-label"})
+            <div class="col-md-10">
+                @Html.PasswordFor(Function(m) m.Password, New With {.class = "form-control"})
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(Function(m) m.ConfirmPassword, New With {.class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.PasswordFor(Function(m) m.ConfirmPassword, New With {.class = "form-control"})
+        <div class="form-group">
+            @Html.LabelFor(Function(m) m.ConfirmPassword, New With {.class = "col-md-2 control-label"})
+            <div class="col-md-10">
+                @Html.PasswordFor(Function(m) m.ConfirmPassword, New With {.class = "form-control"})
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="登録" />
+        <div class="form-group">
+            @Html.LabelFor(Function(m) m.Name, New With {.class = "col-md-2 control-label"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(Function(m) m.Name, New With {.class = "form-control"})
+            </div>
         </div>
-    </div>
+        <div class="form-group">
+            @Html.LabelFor(Function(m) m.Birthday, New With {.class = "col-md-2 control-label"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(Function(m) m.Birthday, New With {.class = "form-control"})
+                @Html.ValidationMessageFor(Function(m) m.Birthday)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="登録" />
+            </div>
+        </div>
     </text>
 End Using
 

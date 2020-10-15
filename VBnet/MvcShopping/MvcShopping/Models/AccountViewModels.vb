@@ -70,6 +70,13 @@ Public Class RegisterViewModel
     <Display(Name:="パスワードの確認入力")>
     <Compare("Password", ErrorMessage:="パスワードと確認のパスワードが一致しません。")>
     Public Property ConfirmPassword As String
+
+    <Display(Name:="名前")>
+    Public Property Name As String
+
+    <Display(Name:="生年月日")>
+    <DataType(DataType.Date)>
+    Public Property Birthday As DateTime
 End Class
 
 Public Class ResetPasswordViewModel
