@@ -63,6 +63,93 @@ Namespace Controllers
             Return RedirectToAction("Index")
 
         End Function
+        ''' <summary>
+        ''' GET: /Cart/RemoveItem
+        ''' </summary>
+        ''' <param name="id">商品ＩＤ</param>
+        ''' <returns></returns>
+        <Authorize>
+        Function RemoveItem(ByVal id As String) As ActionResult
+
+            ' セッション情報からカートのモデルを取得する
+            Dim model As CartModel = Session("Cart")
+
+            ' 指定された商品ＩＤをカートから削除
+            For Each item In model.Items
+                If item.ID = id Then
+                    model.Items.Remove(item)
+                    Exit For
+                End If
+            Next
+
+            ' カートのページを表示する
+            Return RedirectToAction("Index")
+
+        End Function
+
+        ''' <summary>
+        ''' GET: /Cart/EditItem
+        ''' </summary>
+        ''' <param name="id">商品ＩＤ</param>
+        ''' <returns></returns>
+        <Authorize>
+        Function EditItem(ByVal id As String) As ActionResult
+
+            ' セッション情報からカートのモデルを取得する
+            Dim model As CartModel = Session("Cart")
+
+            ' 編集中のＩＤを設定
+            model.EditID = id
+
+            ' カートのページを表示する
+            Return RedirectToAction("Index")
+
+        End Function
+
+        ''' <summary>
+        ''' GET: /Cart/UpdateItem
+        ''' </summary>
+        ''' <returns></returns>
+        <Authorize>
+        Function UpdateItem() As ActionResult
+
+            ' セッション情報からカートのモデルを取得する
+            Dim model As CartModel = Session("Cart")
+
+            ' 変更した数量を取得
+            Dim id As String = model.EditID
+            Dim count As Integer = Integer.Parse(Request.Form("Count"))
+
+            ' 編集中のＩＤの数量を変更
+            Dim item = (From t In model.Items _
+                                  .Where(Function(t) t.ID = id)
+                        Select t)
+            item.Single().Count = count
+            ' 編集中のＩＤにNULLを設定
+            model.EditID = Nothing
+
+            ' カートのページを表示する
+            Return RedirectToAction("Index")
+
+        End Function
+
+        ''' <summary>
+        ''' GET: /Cart/CancelItem
+        ''' </summary>
+        ''' <returns></returns>
+        <Authorize>
+        Function CancelItem() As ActionResult
+
+            ' セッション情報からカートのモデルを取得する
+            Dim model As CartModel = Session("Cart")
+
+            ' 編集中のＩＤをキャンセル
+            model.EditID = Nothing
+
+            ' カートのページを表示する
+            Return RedirectToAction("Index")
+
+        End Function
 
     End Class
 
