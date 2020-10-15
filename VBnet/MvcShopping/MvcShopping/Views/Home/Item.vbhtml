@@ -10,7 +10,8 @@ End Code
     価格：@Model.Product.price<br />
     評価情報：@Model.ProductDetail.description<br />
     @If User.Identity.IsAuthenticated Then
-        @<text>買う</text>
+        @*@<text>買う</text>*@
+        @Html.ActionLink("買う", "/AddItem/" + Model.Product.id, "Cart")
     End If
 </p>
 

@@ -25,21 +25,27 @@
                     <li>@Html.ActionLink("ホーム", "Index", "Home")</li>
                     <li>@Html.ActionLink("詳細", "About", "Home")</li>
                     <li>@Html.ActionLink("問い合わせ", "Contact", "Home")</li>
+                    @If Request.IsAuthenticated Then
+                        @<li>
+                            @Html.ActionLink("カート", "Index", "Cart")
+                        </li>
+                    End If
+
                 </ul>
                 @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - マイ ASP.NET アプリケーション</p>
-        </footer>
-    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container body-content">
+                @RenderBody()
+                        <hr />
+                        <footer>
+                            <p>&copy; @DateTime.Now.Year - マイ ASP.NET アプリケーション</p>
+                                    </footer>
+                                </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required:=False)
+                            @Scripts.Render("~/bundles/jquery")
+                            @Scripts.Render("~/bundles/bootstrap")
+                            @RenderSection("scripts", required:=False)
 </body>
 </html>

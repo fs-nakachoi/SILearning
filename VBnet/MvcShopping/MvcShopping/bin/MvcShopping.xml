@@ -6,6 +6,29 @@ MvcShopping
 </name>
 </assembly>
 <members>
+<member name="M:MvcShopping.Controllers.CartController.AddItem(System.String,System.Nullable{System.Int32})">
+ <summary>
+ GET: /Cart/AddItem
+ </summary>
+ <param name="id">商品ID</param>
+ <param name="count">商品数</param>
+ <returns></returns>
+</member>
+<member name="T:MvcShopping.CartModel">
+ <summary>
+ カートのモデルクラス
+ </summary>
+</member>
+<member name="M:MvcShopping.CartModel.#ctor">
+ <summary>
+ コンストラクタ
+ </summary>
+</member>
+<member name="T:MvcShopping.CartItem">
+ <summary>
+ カートの商品クラス
+ </summary>
+</member>
 <member name="T:MvcShopping.MvcShopping.Models.ProductModel">
  <summary>
  商品情報のモデルクラス

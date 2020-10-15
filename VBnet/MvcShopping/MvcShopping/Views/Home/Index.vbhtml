@@ -42,7 +42,10 @@ End Code
                     </tr>
                     @if User.Identity.IsAuthenticated Then
                         @<tr>
-                            <td align = "center" > 買う</td>
+                            @*<td align = "center" > 買う</td>*@
+                            <td align="center">
+                                @Html.ActionLink("買う", "/AddItem/" + item.id, "Cart")
+                            </td>
                         </tr>
                     End If
                 </table>

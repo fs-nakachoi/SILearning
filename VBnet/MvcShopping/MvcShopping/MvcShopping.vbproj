@@ -227,11 +227,13 @@
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\Startup.Auth.vb" />
     <Compile Include="Controllers\AccountController.vb" />
+    <Compile Include="Controllers\CartController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.vb" />
+    <Compile Include="Models\CartModel.vb" />
     <Compile Include="Models\DataClasses1.designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -271,6 +273,7 @@
     <Content Include="Content\MyMvcShopping.css" />
     <Content Include="Views\Home\ErrPage.vbhtml" />
     <Content Include="Views\Home\Item.vbhtml" />
+    <Content Include="Views\Cart\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
