@@ -20,4 +20,14 @@
 
     End Class
 
+    ''' <summary>
+    ''' 商品詳細のモデルクラス
+    ''' </summary>
+    Public Class ProductItemModel
+        ' 商品情報
+        Public Property Product As TProduct
+        ' 商品詳細情報
+        Public Property ProductDetail As TProductDetail
+    End Class
+
 End Namespace

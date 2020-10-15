@@ -19,7 +19,6 @@ Public Class HomeController
         model.Products = dc.GetTable(Of TProduct)
 
         ' カテゴリ一覧を取得
-        ' model.Categories = dc.GetTable(Of TCategory).OrderBy(Function(c) c.id)
         Dim categories As IQueryable(Of TCategory) = Session("categories")
         If IsNothing(categories) Then
             categories = dc.GetTable(Of TCategory).OrderBy(Function(c) c.id)
@@ -91,10 +90,54 @@ Public Class HomeController
 
         Return View()
     End Function
+    ''' <summary>
+    ''' 商品情報用のコントローラー
+    ''' </summary>
+    ''' <param name="id">商品ＩＤ</param>
+    ''' <returns></returns>
+    Function Item(ByVal id As String) As ActionResult
+
+        ' web.configから接続文字列を取得
+        Dim cnstr As String
+        cnstr = ConfigurationManager.ConnectionStrings("mvcdbConnectionString").ConnectionString
+
+        Try
+
+            ' データベースに接続する
+            Dim dc As New DataContext(cnstr)
+
+            ' 商品情報を取得
+            Dim model As New ProductItemModel()
+            model.Product = (From p In dc.GetTable(Of TProduct)() _
+                                          .Where(Function(p) p.id = id)
+                             Select p).Single()
+
+            ' 商品詳細情報を取得
+            model.ProductDetail = (From p In dc.GetTable(Of TProductDetail)() _
+                                          .Where(Function(p) p.id = id)
+                                   Select p).Single()
+
+            Return View(model)
+
+        Catch ex As Exception
+
+            Return Redirect("/Home/ErrPage")
+
+        End Try
+
+    End Function
 
     Function Contact() As ActionResult
         ViewData("Message") = "Your contact page."
 
         Return View()
     End Function
+    ''' <summary>
+    ''' 商品がみつからない場合（VB上「Error」はFunctionに使えないので変更
+    ''' </summary>
+    ''' <returns></returns>
+    Function ErrPage() As ActionResult
+        Return View()
+    End Function
+
 End Class

@@ -215,6 +215,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Views\Home\Item.vbhtml" />
+    <Content Include="Views\Home\ErrPage.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

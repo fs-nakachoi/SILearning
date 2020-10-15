@@ -15,7 +15,6 @@ End Code
         <ul>
             @For Each item In Model.Categories
                 @<li>
-                    @* @item.name *@
                     @Html.ActionLink(item.name, "/", New With {.category = item.id})
                 </li>
             Next
@@ -32,7 +31,8 @@ End Code
                     </tr>
                     <tr>
                         <td align="center">
-                            @item.name
+                            @*@item.name*@
+                            @Html.ActionLink(item.name, "Item/", New With {item.id})
                         </td>
                     </tr>
                     <tr>

@@ -43,6 +43,12 @@ Partial Public Class DataClasses1DataContext
     End Sub
   Partial Private Sub DeleteTCategory(instance As TCategory)
     End Sub
+  Partial Private Sub InsertTProductDetail(instance As TProductDetail)
+    End Sub
+  Partial Private Sub UpdateTProductDetail(instance As TProductDetail)
+    End Sub
+  Partial Private Sub DeleteTProductDetail(instance As TProductDetail)
+    End Sub
   #End Region
 	
 	Public Sub New()
@@ -79,6 +85,12 @@ Partial Public Class DataClasses1DataContext
 	Public ReadOnly Property TCategory() As System.Data.Linq.Table(Of TCategory)
 		Get
 			Return Me.GetTable(Of TCategory)
+		End Get
+	End Property
+	
+	Public ReadOnly Property TProductDetail() As System.Data.Linq.Table(Of TProductDetail)
+		Get
+			Return Me.GetTable(Of TProductDetail)
 		End Get
 	End Property
 End Class
@@ -273,6 +285,89 @@ Partial Public Class TCategory
 				Me._name = value
 				Me.SendPropertyChanged("name")
 				Me.OnnameChanged
+			End If
+		End Set
+	End Property
+	
+	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
+	
+	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+	
+	Protected Overridable Sub SendPropertyChanging()
+		If ((Me.PropertyChangingEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
+		End If
+	End Sub
+	
+	Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
+		If ((Me.PropertyChangedEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+		End If
+	End Sub
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.TProductDetail")>  _
+Partial Public Class TProductDetail
+	Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	
+	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
+	
+	Private _id As String
+	
+	Private _description As String
+	
+    #Region "拡張メソッドの定義"
+    Partial Private Sub OnLoaded()
+    End Sub
+    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+    End Sub
+    Partial Private Sub OnCreated()
+    End Sub
+    Partial Private Sub OnidChanging(value As String)
+    End Sub
+    Partial Private Sub OnidChanged()
+    End Sub
+    Partial Private Sub OndescriptionChanging(value As String)
+    End Sub
+    Partial Private Sub OndescriptionChanged()
+    End Sub
+    #End Region
+	
+	Public Sub New()
+		MyBase.New
+		OnCreated
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_id", DbType:="Char(5) NOT NULL", CanBeNull:=false, IsPrimaryKey:=true)>  _
+	Public Property id() As String
+		Get
+			Return Me._id
+		End Get
+		Set
+			If (String.Equals(Me._id, value) = false) Then
+				Me.OnidChanging(value)
+				Me.SendPropertyChanging
+				Me._id = value
+				Me.SendPropertyChanged("id")
+				Me.OnidChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_description", DbType:="VarChar(1000) NOT NULL", CanBeNull:=false)>  _
+	Public Property description() As String
+		Get
+			Return Me._description
+		End Get
+		Set
+			If (String.Equals(Me._description, value) = false) Then
+				Me.OndescriptionChanging(value)
+				Me.SendPropertyChanging
+				Me._description = value
+				Me.SendPropertyChanged("description")
+				Me.OndescriptionChanged
 			End If
 		End Set
 	End Property

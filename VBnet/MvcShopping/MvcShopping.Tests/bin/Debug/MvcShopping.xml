@@ -11,5 +11,23 @@ MvcShopping
  商品情報のモデルクラス
  </summary>
 </member>
+<member name="T:MvcShopping.MvcShopping.Models.ProductItemModel">
+ <summary>
+ 商品詳細のモデルクラス
+ </summary>
+</member>
+<member name="M:MvcShopping.HomeController.Item(System.String)">
+ <summary>
+ 商品情報用のコントローラー
+ </summary>
+ <param name="id">商品ＩＤ</param>
+ <returns></returns>
+</member>
+<member name="M:MvcShopping.HomeController.ErrPage">
+ <summary>
+ 商品がみつからない場合（VB上「Error」はFunctionに使えないので変更
+ </summary>
+ <returns></returns>
+</member>
 </members>
 </doc>
