@@ -1,0 +1,15 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MvcShopping
+</name>
+</assembly>
+<members>
+<member name="T:MvcShopping.MvcShopping.Models.ProductModel">
+ <summary>
+ 商品情報のモデルクラス
+ </summary>
+</member>
+</members>
+</doc>
