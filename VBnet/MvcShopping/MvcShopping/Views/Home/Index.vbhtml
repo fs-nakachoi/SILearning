@@ -12,24 +12,17 @@ End Code
 <div class="row">
     <div>
         <h2>商品一覧</h2>
+        <ul>
+            @For Each item In Model.Categories
+                @<li>
+                    @* @item.name *@
+                    @Html.ActionLink(item.name, "/", New With {.category = item.id})
+                </li>
+            Next
+        </ul>
         <p>
-            @* コメントアウト
-                @For i As Integer = 1 To 10
-                    WriteLiteral(String.Format("商品その{0}</br>", i))
-                Next
-            *@
-
 
             @For Each item In Model.Products
-                @* WriteLiteral(String.Format("商品名 {0}</br>", item.name)) *@
-                @* @<text>商品名 </text> @item.name @<br> *@
-                @*
-                    @<p>
-                        <text>商品名 </text> @item.name
-                        <text>価格 </text> @item.price
-                        <img src="/Images/@(item.id).jpg" alt="" />
-                    </p>
-                *@
 
                 @<table align="left">
                     <tr>
@@ -55,13 +48,13 @@ End Code
         </p>
 
         @If Model.HasPrevPage Then
-            @Html.ActionLink("前頁", "/", New With {.Page = Model.CurrentPage - 1})
+            @Html.ActionLink("前頁", "/", New With {.Page = Model.CurrentPage - 1, .category = Model.Category})
         Else
             @<text>前頁</text>
         End If
 
         @If Model.HasNextPage Then
-            @Html.ActionLink("次頁", "/", New With {.Page = Model.CurrentPage + 1})
+            @Html.ActionLink("次頁", "/", New With {.Page = Model.CurrentPage + 1, .category = Model.Category})
         Else
             @<text>次頁</text>
         End If

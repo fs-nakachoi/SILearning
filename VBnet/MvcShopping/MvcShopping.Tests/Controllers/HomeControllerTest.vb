@@ -12,7 +12,7 @@ Imports MvcShopping
         Dim controller As New HomeController()
 
         ' Act
-        Dim result As ViewResult = DirectCast(controller.Index(Nothing), ViewResult)
+        Dim result As ViewResult = DirectCast(controller.Index(Nothing, Nothing), ViewResult)
 
         ' Assert
         Assert.IsNotNull(result)
