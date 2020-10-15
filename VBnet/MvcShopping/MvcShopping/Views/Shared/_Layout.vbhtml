@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - マイ ASP.NET アプリケーション</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,6 +26,7 @@
                     <li>@Html.ActionLink("詳細", "About", "Home")</li>
                     <li>@Html.ActionLink("問い合わせ", "Contact", "Home")</li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>

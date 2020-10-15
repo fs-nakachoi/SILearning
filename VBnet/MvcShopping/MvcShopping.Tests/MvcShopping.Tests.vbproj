@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B127CC70-0133-4055-9472-EA857C5B8F46}</ProjectGuid>
+    <ProjectGuid>{3C41469B-7648-4E69-9F20-9F7713EFCE58}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>MvcShopping.Tests</RootNamespace>
     <AssemblyName>MvcShopping.Tests</AssemblyName>
@@ -117,7 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvcShopping\MvcShopping.vbproj">
-      <Project>{92B63D6C-1453-47CE-9414-E71563F3C0CE}</Project>
+      <Project>{24625764-DBC6-4AAD-A6CC-C724358CCF48}</Project>
       <Name>MvcShopping</Name>
     </ProjectReference>
   </ItemGroup>
